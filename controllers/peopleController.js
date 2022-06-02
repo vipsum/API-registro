@@ -3,16 +3,19 @@ const Person = require("../models/Person");
 
 const addPerson = async (req, res) => {
   const { name, surname, gender, birthDate, dni } = req.body;
+  try {
+    const person = await Person.create({
+      name: name,
+      surname: surname,
+      gender: gender,
+      birthDate: birthDate,
+      dni: dni,
+    });
 
-  const person = await Person.create({
-    name: name,
-    surname: surname,
-    gender: gender,
-    birthDate: birthDate,
-    dni: dni,
-  });
-
-  res.send("Register succesfully added");
+    res.json(person);
+  } catch (error) {
+    res.json({ error: error.errors[0].message });
+  }
 };
 
 const updatePerson = async (req, res) => {
@@ -23,14 +26,14 @@ const updatePerson = async (req, res) => {
       where: { dni: dni },
     }
   );
-  res.send(person);
+  res.json(person);
 };
 
 const findPersonDni = async (req, res) => {
   const { dni } = req.query;
   const person = await Person.findOne({ where: { dni: dni } });
 
-  res.send(person);
+  res.json(person);
 };
 
 const findPersonSurname = async (req, res) => {
@@ -38,7 +41,8 @@ const findPersonSurname = async (req, res) => {
   const person = await Person.findAll({
     where: { surname: { [Op.startsWith]: surname } },
   });
-  res.send(person);
+
+  res.json(person);
 };
 
 module.exports = { addPerson, updatePerson, findPersonDni, findPersonSurname };
