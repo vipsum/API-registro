@@ -1,0 +1,12 @@
+{
+  "name": "api-registro",
+  "version": "1.0.0",
+  "description": "Challenge de API para el registro nacional de las personas.",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.18.1"
+  },
+  "license": "MIT"
+}
