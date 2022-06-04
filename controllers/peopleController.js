@@ -3,6 +3,7 @@ const Person = require("../models/Person");
 
 const addPerson = async (req, res) => {
   const { name, surname, gender, birthDate, dni } = req.body;
+  // const name = req.body.name is the same as doing the above thingy
   try {
     const person = await Person.create({
       name: name,
