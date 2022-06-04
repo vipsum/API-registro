@@ -40,7 +40,7 @@ const findPersonDni = async (req, res) => {
 const findPersonSurname = async (req, res) => {
   const { surname } = req.query;
   const person = await Person.findAll({
-    where: { surname: { [Op.startsWith]: surname } },
+    where: { surname: { [Op.iLike]: `${surname}%` } },
   });
 
   res.json(person);
