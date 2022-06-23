@@ -24,7 +24,7 @@ const Person = sequelize.define("Person", {
     unique: true,
   },
 });
-
+//synchronizes model with whats inside the database
 Person.sync();
 
 module.exports = Person;

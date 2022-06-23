@@ -1,3 +1,4 @@
+//main file that calls every other one
 const express = require("express");
 //getting express methods
 const app = express();

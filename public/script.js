@@ -1,10 +1,11 @@
 const register = async () => {
+    //grabbing html elements 
     const name = document.getElementById("name").value;
     const surname = document.getElementById("surname").value;
     const birthDate = document.getElementById("birthDate").value;
     const gender = document.getElementById("gender").value;
     const dni = document.getElementById("dni").value;
-
+    //declaring data as an object
     const data = {
         name: name,
         surname: surname,
@@ -12,7 +13,7 @@ const register = async () => {
         gender: gender,
         dni: dni,
     };
-
+    //we save our response in
     const response = await fetch("/api/register", {
         method: "post",
         headers: {

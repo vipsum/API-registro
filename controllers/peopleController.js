@@ -41,6 +41,7 @@ const findPersonSurname = async (req, res) => {
   const { surname } = req.query;
   const person = await Person.findAll({
     where: { surname: { [Op.iLike]: `${surname}%` } },
+                                //: surname + "%" } },
   });
 
   res.json(person);
